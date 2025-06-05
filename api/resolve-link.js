@@ -12,7 +12,8 @@ const TENANT_ID = '6ecbe87a-bf55-407f-b022-cab8b9faff30';
 const CLIENT_ID = '7a977f99-3397-4207-a81d-508c96dcc655';
 const CLIENT_SECRET = 'jHY8Q~Aco0L81PBneYnSGLleWLx8eXot7fExkcpM';
 
-const TOKEN_URL = https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token;
+// TOKEN_URL needs to be a string with quotes
+const TOKEN_URL = `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token`;
 
 async function getGraphToken() {
   const params = new URLSearchParams();
@@ -43,16 +44,17 @@ export default async function handler(req, res) {
   try {
     const token = await getGraphToken();
 
+    // Use template literal with backticks and quotes correctly
     const encodedUrl = base64UrlEncode(fullUrl);
-    const graphUrl = https://graph.microsoft.com/v1.0/shares/u!${encodedUrl}/driveItem;
+    const graphUrl = `https://graph.microsoft.com/v1.0/shares/u!${encodedUrl}/driveItem`;
 
+    // Authorization header value must be a string with Bearer token
     const response = await axios.get(graphUrl, {
-      headers: { Authorization: Bearer ${token} }
+      headers: { Authorization: `Bearer ${token}` }
     });
 
     const item = response.data;
 
-    // Send back metadata for the single file
     res.status(200).json({
       name: item.name,
       itemId: item.id,

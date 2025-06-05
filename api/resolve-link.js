@@ -52,6 +52,7 @@ export default async function handler(req, res) {
 
     const item = response.data;
 
+    // Send back metadata for the single file
     res.status(200).json({
       name: item.name,
       itemId: item.id,

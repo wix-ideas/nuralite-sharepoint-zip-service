@@ -33,3 +33,22 @@ Send a POST request to `/api/zip-files` endpoint with the JSON payload:
     { "name": "file2.docx", "url": "https://sharepoint-site/file2.docx" }
   ]
 }
+
+The API will respond with a ZIP file containing all requested files.
+
+Important Notes
+Make sure to add authentication headers (e.g., Bearer token) in the API code to access SharePoint files.
+
+Large file sets may increase response time and memory usage.
+
+You can extend this service to save ZIPs temporarily or trigger emails after zipping.
+
+Dependencies
+JSZip – For creating ZIP archives
+
+node-fetch – For fetching remote files
+
+License
+MIT License
+
+If you need help with integrating authentication or extending functionality, feel free to reach out.

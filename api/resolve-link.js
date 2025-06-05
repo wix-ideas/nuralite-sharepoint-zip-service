@@ -62,21 +62,18 @@ export default async function handler(req, res) {
     const token = await getGraphToken();
 
     if (fullUrl) {
-      // SINGLE URL CASE
       const result = await resolveSingleUrl(fullUrl, token);
       res.status(200).json(result);
       return;
     }
 
     if (fullUrls && Array.isArray(fullUrls)) {
-      // BATCH CASE
       const results = [];
       for (const url of fullUrls) {
         try {
           const metadata = await resolveSingleUrl(url, token);
           results.push(metadata);
         } catch (err) {
-          // For failure, push null or an error object if you want
           results.push(null);
           console.error(`Failed to resolve ${url}`, err.message);
         }

@@ -26,15 +26,14 @@ This is a serverless Node.js API designed to fetch multiple files from SharePoin
 
 Send a POST request to `/api/zip-files` endpoint with the JSON payload:
 
-```json
+The API will respond with a ZIP file containing all requested files.
+
 {
   "files": [
     { "name": "file1.pdf", "url": "https://sharepoint-site/file1.pdf" },
     { "name": "file2.docx", "url": "https://sharepoint-site/file2.docx" }
   ]
 }
-
-The API will respond with a ZIP file containing all requested files.
 
 Important Notes
 Make sure to add authentication headers (e.g., Bearer token) in the API code to access SharePoint files.
@@ -52,3 +51,5 @@ License
 MIT License
 
 If you need help with integrating authentication or extending functionality, feel free to reach out.
+
+

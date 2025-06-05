@@ -28,12 +28,12 @@ Send a POST request to `/api/zip-files` endpoint with the JSON payload:
 
 The API will respond with a ZIP file containing all requested files.
 
-{
+`{
   "files": [
     { "name": "file1.pdf", "url": "https://sharepoint-site/file1.pdf" },
     { "name": "file2.docx", "url": "https://sharepoint-site/file2.docx" }
   ]
-}
+}`
 
 Important Notes
 Make sure to add authentication headers (e.g., Bearer token) in the API code to access SharePoint files.
